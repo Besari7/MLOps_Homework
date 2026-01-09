@@ -32,7 +32,7 @@ def hash_feature(value: str, num_buckets: int = 1000) -> int:
 
     # Use MurmurHash3 for fast, uniform hashing
     hash_value = mmh3.hash(value, seed=42, signed=False)
-    return hash_value % num_buckets
+    return str(hash_value % num_buckets)  # BUG: returns string not int
 
 
 def hash_features_batch(values: List[str], num_buckets: int = 1000) -> List[int]:
